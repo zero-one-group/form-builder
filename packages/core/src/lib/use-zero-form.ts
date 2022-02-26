@@ -1,7 +1,7 @@
 import { sentenceCase } from 'change-case';
 
+import { getInOptionsProps, getValuesInDataProps } from '../helpers';
 import { ZeroFieldItem, ZeroFormProps, ZeroFormTypes } from '../types';
-import { findLabelInOptions, findValuesInData } from './helpers';
 
 export interface UseZeroFormReturn {
   fields: ZeroFieldItem[];
@@ -23,9 +23,9 @@ export function useZeroForm(props: ZeroFormProps): UseZeroFormReturn {
       const name = val;
       const value = values[i];
 
-      const findLabel = () => {
+      const getOption = () => {
         if (options) {
-          const label = findLabelInOptions(options, name);
+          const label = getInOptionsProps(options, name);
           return label;
         }
         return undefined;
@@ -33,15 +33,15 @@ export function useZeroForm(props: ZeroFormProps): UseZeroFormReturn {
 
       return {
         type: 'text',
-        ...findLabel(),
+        ...getOption(),
         name,
         value,
-        label: findLabel()?.label ?? sentenceCase(name),
+        label: getOption()?.label ?? sentenceCase(name),
       };
-    }) as ZeroFieldItem[];
+    });
   };
 
-  const getValues = () => findValuesInData(data);
+  const getValues = () => getValuesInDataProps(data);
 
   return { fields: getFields(), values: getValues() };
 }

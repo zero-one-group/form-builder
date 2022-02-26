@@ -1,4 +1,4 @@
-import { InputPropsTypes, ZeroFieldTypes } from './input';
+import { InputPropsTypes } from './input';
 
 export type ZeroSelectItem = {
   label: string;
