@@ -14,5 +14,13 @@
         "cacheableOperations": ["build", "lint", "test", "e2e"]
       }
     }
+  },
+  "targetDependencies": {
+    "publish": [
+      {
+        "target": "build",
+        "projects": "self"
+      }
+    ]
   }
 }

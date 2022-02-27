@@ -27,6 +27,14 @@
         "jestConfig": "packages/core/jest.config.js",
         "passWithNoTests": true
       }
+    },
+    "publish": {
+      "executor": "@nrwl/workspace:run-commands",
+      "outputs": [],
+      "options": {
+        "command": "yarn publish --access public",
+        "cwd": "dist/packages/core"
+      }
     }
   },
   "tags": []
