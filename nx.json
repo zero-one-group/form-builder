@@ -16,6 +16,12 @@
     }
   },
   "targetDependencies": {
+    "build": [
+      {
+        "target": "test",
+        "projects": "self"
+      }
+    ],
     "publish": [
       {
         "target": "build",

@@ -1,5 +1,16 @@
 {
   "name": "zero-form-builder",
-  "version": "0.0.1",
-  "type": "commonjs"
+  "version": "0.0.2",
+  "type": "commonjs",
+  "description": "Simplify in building formik form",
+  "repository": "git@github.com:zero-one-group/zero-form-builder.git",
+  "author": "Rohmad Sasmito <rochmad.26@gmail.com>",
+  "keywords": [
+    "formik",
+    "form",
+    "form-generator",
+    "formik-form-generator",
+    "zero-one-group"
+  ],
+  "license": "MIT"
 }

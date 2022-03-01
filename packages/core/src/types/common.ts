@@ -1,4 +1,4 @@
-import { InputPropsTypes } from './input';
+import { ZeroFieldTypes } from './input';
 
 export type ZeroSelectItem = {
   label: string;
@@ -11,7 +11,7 @@ export type ZeroCheckboxItem = {
 };
 
 export interface ZeroOptions {
-  type: InputPropsTypes;
+  type: ZeroFieldTypes;
   label?: string;
   placeholder?: string;
   isRequired?: boolean;
