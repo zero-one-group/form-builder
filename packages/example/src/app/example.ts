@@ -1,4 +1,4 @@
-import { useZeroForm, ZeroFormOptions } from 'zero-form-builder';
+import { useZeroForm, ZeroFormOptions } from '@01group/form-builder';
 
 export function example() {
   const data = {

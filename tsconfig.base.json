@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "jsx": "react-jsx",
     "paths": {
-      "zero-form-builder": ["packages/core/src/index.ts"]
+      "@01group/form-builder": ["packages/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

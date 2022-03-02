@@ -22,14 +22,14 @@ describe('core', () => {
   it('should return name with custom options', () => {
     const options: ZeroFormOptions = {
       name: {
-        type: 'range',
+        type: 'select',
         label: 'Your name is',
         selectOptions: [{ label: 'satu', value: 1 }],
       },
     };
     const { result } = renderHook(() => useZeroForm({ options, data: DATA }));
     const expectedResult = {
-      type: 'range',
+      type: 'select',
       label: 'Your name is',
       name: 'name',
       value: 'YOUR NAME',
