@@ -17,6 +17,8 @@ describe('core', () => {
     expect(result.current.fields[0].label).toBe(expectedResult.label);
     expect(result.current.fields[0].name).toBe(expectedResult.name);
     expect(result.current.fields[0].value).toBe(expectedResult.value);
+
+    expect(result.current.values['name']).toBe(expectedResult.value);
   });
 
   it('should return name with custom options', () => {
@@ -42,5 +44,7 @@ describe('core', () => {
     expect(JSON.stringify(result.current.fields[0].selectOptions)).toBe(
       JSON.stringify(expectedResult.selectOptions)
     );
+
+    expect(result.current.values['name']).toBe(expectedResult.value);
   });
 });

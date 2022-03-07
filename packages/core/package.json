@@ -1,6 +1,6 @@
 {
   "name": "@01group/form-builder",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "type": "commonjs",
   "description": "Simplify in building formik form",
   "repository": "https://github.com/zero-one-group/form-builder.git",

@@ -17,6 +17,8 @@ export interface ZeroOptions {
   isRequired?: boolean;
   selectOptions?: ZeroSelectItem[];
   isReadonly?: boolean;
+  isLoading?: boolean;
+  onChange?: (value: string) => void;
   checkboxes?: ZeroCheckboxItem[];
 }
 
