@@ -1,9 +1,13 @@
 {
   "name": "@01group/form-builder",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "commonjs",
   "description": "Simplify in building formik form",
-  "repository": "https://github.com/zero-one-group/form-builder.git",
+  "homepage": "https://zero-one-group.github.io/form-builder",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zero-one-group/form-builder.git"
+  },
   "author": "Rohmad Sasmito <rochmad.26@gmail.com>",
   "keywords": [
     "formik",

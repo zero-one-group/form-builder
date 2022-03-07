@@ -15,11 +15,16 @@ export interface ZeroOptions {
   label?: string;
   placeholder?: string;
   isRequired?: boolean;
+  // list option of select
   selectOptions?: ZeroSelectItem[];
   isReadonly?: boolean;
   isLoading?: boolean;
   onChange?: (value: string) => void;
   checkboxes?: ZeroCheckboxItem[];
+  // set accepted file types.
+  accept?: string | string[];
+  // whether allow to upload multiple files or not
+  multiple?: boolean;
 }
 
 export interface ZeroFieldItem extends ZeroOptions {
