@@ -1,94 +1,106 @@
 
+# @01group/form-builder
 
-# ZeroFormBuilder
+This is a lightweight react hook library to simplify approach in building formik form.
 
-This project was generated using [Nx](https://nx.dev).
+## Story behind
+In our cases, we often found our development process was couples doing process in order to building form.
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+We find a better approach to make this more efficiency.
 
-🔎 **Smart, Fast and Extensible Build System**
+## Installation
+```bash
+yarn add @01group/form-builder
+```
 
-## Adding capabilities to your workspace
+or if you prefer to choose `npm`
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+```bash
+npm install -S @01group/form-builder
+```
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@01group/form-builder/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `nx e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+## Usage
+This main library is using a react hook `useZeroForm`. It will return `fields` and `values`.
 
 
+### Description
+**fields**: list of object field that useful to handle form
 
-## ☁ Nx Cloud
+**values**: object of value, it could be to fill `initialValues` in `formik`
 
-### Distributed Computation Caching & Distributed Task Execution
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
+### Example
+**Nb.** Below is our approach. You might used your own, if you think this not suit enough for you.
 
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
+```typescript
+import { Formik, Form } from 'formik'
+import { useZeroForm, ZeroFormTypes } from '@01group/form-builder';
 
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
+export const DATA = {
+  name: '',
+  province_id: '',
+  city_id: '',
+  date_of_birth: '',
+};
 
-Visit [Nx Cloud](https://nx.app/) to learn more.
+export const generalOptions = {
+  name: {
+    type: 'text',
+    label: 'Your name',
+    isRequired: true,
+  },
+  province_id: {
+    type: 'select',
+    label: 'Province',
+    placeholder: 'Select a province',
+  },
+  city_id: {
+    type: 'select',
+    label: 'City',
+    placeholder: 'Select a city',
+  },
+};
+
+export function Example() {
+  const { fields, values } = useZeroForm({ data: DATA as ZeroFormTypes, options: generalOptions });
+
+  return (
+    <Formik
+      initialValues={values}
+      validationSchema={validationSchema}
+      onSubmit={handleSubmit}
+      enableReinitialize
+    >
+      <Form>
+        {(fields ?? []).map((field, i) => (
+          <GenerateField key={i} isReadonly={isReadonly} {...field} />
+        ))}
+      </Form>
+    </Formik>
+  )
+}
+
+export function GenerateField(props: ZeroFieldItem) {
+  const inputProps = {
+    id: props.name,
+    name: props.name,
+    label: props.label,
+    placeholder: props.placeholder,
+    isRequired: props.isRequired,
+    isReadOnly: props.isReadonly,
+  };
+  const selectProps = {
+    ...inputProps,
+    items: props.selectOptions ?? [],
+  };
+
+  const elements: Partial<Record<Partial<ZeroFieldTypes>, JSX.Element>> = {
+    select: <Select {...selectProps} />,
+    text: <TextField {...inputProps} />,
+    row: <Textarea {...inputProps} />,
+    file: <Dropzone width="full" {...inputProps} />,
+  };
+
+  return elements[props.type] ?? <TextField {...inputProps} />;
+}
+```

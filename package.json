@@ -1,14 +1,15 @@
 {
   "name": "form-builder",
   "version": "0.0.1",
-  "license" : "Apache-2.0",
+  "license": "Apache-2.0",
   "scripts": {
     "build": "yarn nx build core",
     "start": "yarn nx serve example",
     "test": "yarn nx test",
     "test:example": "yarn test example",
     "test:all": "yarn test core && yarn test example",
-    "publish-to-npm": "yarn nx publish core"
+    "publish-to-npm": "yarn nx publish core",
+    "docs": "yarn build && cd packages/core/src && npx typedoc index.ts --out ../../../docs --readme ../../../README.md"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,7 @@
     "@nrwl/jest": "13.8.3",
     "@nrwl/js": "13.8.3",
     "@nrwl/linter": "13.8.3",
+    "@nrwl/react": "^13.8.4",
     "@nrwl/tao": "13.8.3",
     "@nrwl/workspace": "13.8.3",
     "@testing-library/react-hooks": "^7.0.2",
