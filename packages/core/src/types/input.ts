@@ -11,4 +11,5 @@ export type ZeroFieldTypes =
   | 'time'
   | 'text'
   | 'row'
-  | 'url';
+  | 'url'
+  | 'tags';

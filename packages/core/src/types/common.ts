@@ -25,11 +25,17 @@ export interface ZeroOptions {
   accept?: string | string[];
   // whether allow to upload multiple files or not
   multiple?: boolean;
+  // meta options. for another wider purposes
+  meta?: ZeroMetaOptions;
 }
 
 export interface ZeroFieldItem extends ZeroOptions {
   name: string;
   value?: string;
+}
+
+export interface ZeroMetaOptions {
+  [key: string]: string | boolean | number | string[] | boolean[] | number[];
 }
 
 export interface ZeroFormTypes {
