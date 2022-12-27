@@ -1,5 +1,5 @@
 {
-  "root": "packages/core",
+  "name": "core",
   "sourceRoot": "packages/core/src",
   "projectType": "library",
   "targets": {
@@ -24,12 +24,12 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/core"],
       "options": {
-        "jestConfig": "packages/core/jest.config.js",
+        "jestConfig": "packages/core/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "outputs": [],
       "options": {
         "command": "yarn publish --access public",

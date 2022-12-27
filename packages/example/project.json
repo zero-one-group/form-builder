@@ -1,5 +1,5 @@
 {
-  "root": "packages/example",
+  "name": "example",
   "sourceRoot": "packages/example/src",
   "projectType": "application",
   "targets": {
@@ -14,7 +14,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/js:node",
+      "executor": "@nrwl/node:node",
       "options": {
         "buildTarget": "example:build"
       }
@@ -30,7 +30,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["coverage/packages/example"],
       "options": {
-        "jestConfig": "packages/example/jest.config.js",
+        "jestConfig": "packages/example/jest.config.ts",
         "passWithNoTests": true
       }
     }
